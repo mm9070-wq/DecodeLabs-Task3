@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Test</title>
+</head>
+<body>
+
+<h2>Add User</h2>
+
+<input type="text" id="name" placeholder="Enter name">
+<button onclick="addUser()">Add User</button>
+
+<script>
+async function addUser() {
+
+    const name = document.getElementById("name").value;
+
+    const response = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name })
+    });
+
+    const data = await response.json();
+
+    alert(data.message);
+}
+</script>
+
+</body>
+</html>
